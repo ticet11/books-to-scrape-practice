@@ -32,7 +32,7 @@ const scrape = async () => {
 				};
 				const text_rating = book.querySelector("p.star-rating").className.split(" ")[1];
 				const rating = numbersObj[text_rating] || 0;
-				const link = `${location.href}${book.querySelector("h3 a").getAttribute("href")}`;
+				const link = `${location.origin}/catalogue/${book.querySelector("h3 a").getAttribute("href")}`;
 				return {
 					title,
 					price,
