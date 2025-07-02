@@ -1,7 +1,9 @@
 import puppeteer from "puppeteer";
+import fs from "fs";
 
 const scrape = async () => {
-	const browser = await puppeteer.launch({ devtools: true });
+	// const browser = await puppeteer.launch({ devtools: true });
+	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 
 	const url = "https://books.toscrape.com/";
@@ -36,6 +38,7 @@ const scrape = async () => {
 		});
 		return bookArray;
 	});
+	fs.writeFileSync("books.json", JSON.stringify(books, null, 2));
 
 	await browser.close();
 };
